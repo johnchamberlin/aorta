@@ -5,165 +5,11 @@ John Chamberlin
 
 ``` r
 library(dplyr)
-```
-
-    ## Warning: package 'dplyr' was built under R version 4.1.2
-
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
-``` r
 library(tidyr)
-```
-
-    ## Warning: package 'tidyr' was built under R version 4.1.2
-
-``` r
 library(tidyverse)
-```
-
-    ## Warning: package 'tidyverse' was built under R version 4.1.2
-
-    ## ── Attaching packages
-    ## ───────────────────────────────────────
-    ## tidyverse 1.3.2 ──
-
-    ## ✓ ggplot2 3.3.6     ✓ purrr   0.3.4
-    ## ✓ tibble  3.1.6     ✓ stringr 1.4.0
-    ## ✓ readr   2.1.2     ✓ forcats 0.5.2
-
-    ## Warning: package 'ggplot2' was built under R version 4.1.2
-
-    ## Warning: package 'readr' was built under R version 4.1.2
-
-    ## Warning: package 'forcats' was built under R version 4.1.2
-
-    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ## x dplyr::filter() masks stats::filter()
-    ## x dplyr::lag()    masks stats::lag()
-
-``` r
 library(tximport)
 library(DESeq2)
 ```
-
-    ## Loading required package: S4Vectors
-
-    ## Warning: package 'S4Vectors' was built under R version 4.1.3
-
-    ## Loading required package: stats4
-    ## Loading required package: BiocGenerics
-    ## 
-    ## Attaching package: 'BiocGenerics'
-    ## 
-    ## The following objects are masked from 'package:dplyr':
-    ## 
-    ##     combine, intersect, setdiff, union
-    ## 
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     IQR, mad, sd, var, xtabs
-    ## 
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     anyDuplicated, append, as.data.frame, basename, cbind, colnames,
-    ##     dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
-    ##     grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
-    ##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
-    ##     rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
-    ##     union, unique, unsplit, which.max, which.min
-    ## 
-    ## 
-    ## Attaching package: 'S4Vectors'
-    ## 
-    ## The following object is masked from 'package:tidyr':
-    ## 
-    ##     expand
-    ## 
-    ## The following objects are masked from 'package:dplyr':
-    ## 
-    ##     first, rename
-    ## 
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     expand.grid, I, unname
-    ## 
-    ## Loading required package: IRanges
-    ## 
-    ## Attaching package: 'IRanges'
-    ## 
-    ## The following object is masked from 'package:purrr':
-    ## 
-    ##     reduce
-    ## 
-    ## The following objects are masked from 'package:dplyr':
-    ## 
-    ##     collapse, desc, slice
-    ## 
-    ## Loading required package: GenomicRanges
-
-    ## Warning: package 'GenomicRanges' was built under R version 4.1.2
-
-    ## Loading required package: GenomeInfoDb
-
-    ## Warning: package 'GenomeInfoDb' was built under R version 4.1.2
-
-    ## Loading required package: SummarizedExperiment
-    ## Loading required package: MatrixGenerics
-    ## Loading required package: matrixStats
-    ## 
-    ## Attaching package: 'matrixStats'
-    ## 
-    ## The following object is masked from 'package:dplyr':
-    ## 
-    ##     count
-    ## 
-    ## 
-    ## Attaching package: 'MatrixGenerics'
-    ## 
-    ## The following objects are masked from 'package:matrixStats':
-    ## 
-    ##     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
-    ##     colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
-    ##     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
-    ##     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
-    ##     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
-    ##     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
-    ##     colWeightedMeans, colWeightedMedians, colWeightedSds,
-    ##     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
-    ##     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
-    ##     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
-    ##     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
-    ##     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
-    ##     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
-    ##     rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
-    ##     rowWeightedSds, rowWeightedVars
-    ## 
-    ## Loading required package: Biobase
-    ## Welcome to Bioconductor
-    ## 
-    ##     Vignettes contain introductory material; view with
-    ##     'browseVignettes()'. To cite Bioconductor, see
-    ##     'citation("Biobase")', and for packages 'citation("pkgname")'.
-    ## 
-    ## 
-    ## Attaching package: 'Biobase'
-    ## 
-    ## The following object is masked from 'package:MatrixGenerics':
-    ## 
-    ##     rowMedians
-    ## 
-    ## The following objects are masked from 'package:matrixStats':
-    ## 
-    ##     anyMissing, rowMedians
 
 ``` r
 # import the metadata
@@ -178,37 +24,8 @@ m2 = m2 %>% filter(!is.na(Organism))
 colnames(m1) = make.names(colnames(m1),unique=TRUE)
 colnames(m2) = make.names(colnames(m2),unique=TRUE)
 
-print((m1 %>% left_join(m2, by = c("Glotzbach.Lab.ID" = "Sample.Name"))))
+metada = m1 %>% left_join(m2, by = c("Glotzbach.Lab.ID" = "Sample.Name"))
 ```
-
-    ## # A tibble: 20 × 20
-    ##    Phenotype         Glotzbach.Lab.ID HCI.EXP. Storage Conc...ng.uL. Sample.Type
-    ##    <chr>             <chr>            <chr>    <chr>   <chr>         <chr>      
-    ##  1 Bicuspid valve +… GLO-033          18845X1  RNAlat… 29.2          Total RNA …
-    ##  2 Bicuspid valve +… GLO-038          18845X2  RNAlat… 22.4          Total RNA …
-    ##  3 Bicuspid valve +… GLO-039          18845X3  RNAlat… 40            Total RNA …
-    ##  4 Bicuspid valve +… GLO-046          18845X4  RNAlat… 31.3          Total RNA …
-    ##  5 Tricuspid valve … GLO-045          18845X5  RNAlat… 8.6999999999… Total RNA …
-    ##  6 Tricuspid valve … GLO-037          18845X6  RNAlat… 44.7          Total RNA …
-    ##  7 Donor: tricuspid… GLO-041          18845X7  RNAlat… 40.4          Total RNA …
-    ##  8 Donor: tricuspid… GLO-041          18845X7  RNAlat… 52.7          Total RNA …
-    ##  9 Donor: tricuspid… GLO-044          18845X8  RNAlat… 28.8          Total RNA …
-    ## 10 Donor: tricuspid… GLO-044          18845X8  RNAlat… 32.1          Total RNA …
-    ## 11 Bicuspid valve +… GLO-031          18794X1  Fresh … <NA>          <NA>       
-    ## 12 Bicuspid valve +… GLO-008          18794X2  Fresh … <NA>          <NA>       
-    ## 13 Bicuspid valve +… GLO-033          18794X3  Fresh … 29.2          Total RNA …
-    ## 14 Bicuspid valve +… GLO-013          18794X6  Fresh … <NA>          <NA>       
-    ## 15 Bicuspid valve +… GLO-024          18794X7  Fresh … <NA>          <NA>       
-    ## 16 Bicuspid valve +… GLO-028          18794X10 Fresh … <NA>          <NA>       
-    ## 17 Bicuspid valve +… GLO-032          18794X9  Fresh … <NA>          <NA>       
-    ## 18 Tricuspid valve … GLO-027          18794X5  Fresh … <NA>          <NA>       
-    ## 19 Tricuspid valve … GLO-004          18794X8  Fresh … <NA>          <NA>       
-    ## 20 Donor: tricuspid… GLO-003          18794X4  Fresh … <NA>          <NA>       
-    ## # … with 14 more variables: Organism <chr>, QC.Conc...ng.uL. <dbl>,
-    ## #   QC.RIN <dbl>, Library.Protocol <chr>, Prepped.by.Core. <chr>,
-    ## #   Index.Tag.A <chr>, Index.Tag.Sequence.A <chr>, Index.Tag.B <chr>,
-    ## #   Index.Tag.Sequence.B <chr>, ID <chr>, Lib.QC.Conc. <dbl>, QC.Status <chr>,
-    ## #   Seq.Lib.Prep.Status <chr>, Core.to.prep.lib. <chr>
 
 ``` r
 ifiles = list.files("data/rsem/",
