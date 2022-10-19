@@ -52,7 +52,44 @@ txi.rsem = tximport(files,type = "rsem",
 ``` r
 sampleTable = data.frame("batch"=gsub("X.*$","",colnames(txi.rsem$counts)))
 rownames(sampleTable) = colnames(txi.rsem$counts)
+# add column for condition see deseq2 vignette.
 
+#dds <- DESeqDataSetFromMatrix(countData = cts,
+#                              colData = coldata,
+#                              design= ~ batch + condition)
+
+
+print(sampleTable)
+```
+
+    ##          batch
+    ## 18890X1  18890
+    ## 18890X2  18890
+    ## 18890X3  18890
+    ## 18890X4  18890
+    ## 18890X5  18890
+    ## 18890X6  18890
+    ## 18890X7  18890
+    ## 18890X8  18890
+    ## 18890X9  18890
+    ## 19192X1  19192
+    ## 19192X10 19192
+    ## 19192X11 19192
+    ## 19192X12 19192
+    ## 19192X13 19192
+    ## 19192X14 19192
+    ## 19192X15 19192
+    ## 19192X16 19192
+    ## 19192X17 19192
+    ## 19192X2  19192
+    ## 19192X3  19192
+    ## 19192X4  19192
+    ## 19192X5  19192
+    ## 19192X6  19192
+    ## 19192X7  19192
+    ## 19192X9  19192
+
+``` r
 dds <- DESeq2::DESeqDataSetFromTximport(txi.rsem, sampleTable, ~batch)
 ```
 
